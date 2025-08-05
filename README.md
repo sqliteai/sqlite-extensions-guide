@@ -6,19 +6,12 @@ Whether you're working with Python, C, Node.js, or on iOS/Android, this guide wa
 
 ---
 
-## 📚 Contents
+## Contents
 
 - [Overview](docs/overview.md)
-- [Building Extensions](docs/building.md)
-- [Loading Extensions](docs/loading.md)
+- [Loading extension on Linux](platforms/linux.md)
+- [Loading extension on macOS](platforms/macos.md)
+- [Loading extension on Windows](platforms/windows.md)
+- [Loading extension on iOS](platforms/ios.md)
+- [Loading extension on Android](platforms/android.md)
 - [Troubleshooting](docs/troubleshooting.md)
-
----
-
-## 🖥️ Platform-specific Instructions
-
-- [Linux](platforms/linux.md)
-- [macOS](platforms/macos.md)
-- [Windows](platforms/windows.md)
-- [iOS](platforms/ios.md)
-- [Android](platforms/android.md)
