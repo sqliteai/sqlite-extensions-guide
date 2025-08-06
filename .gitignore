@@ -1,0 +1,82 @@
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# Go modules
+go.mod
+go.sum
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+.node_repl_history
+*.tgz
+*.tar.gz
+.nyc_output
+coverage/
+.grunt
+bower_components
+.lock-wscript
+build/Release
+.coverage
+.nyc_output
+.cache
+
+# PHP
+vendor/
+composer.phar
+composer.lock
+phpunit.xml
+.phpunit.result.cache
+*.log
+
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# SQLite
+*.db
+*.sqlite
+*.sqlite3

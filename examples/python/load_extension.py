@@ -2,7 +2,7 @@ import sqlite3
 import os
 
 # Path to your compiled extension (.dylib for macOS/iOS, .so for linux/Android, .dll for Windows)
-EXTENSION_PATH = os.path.abspath("my_extension.dylib")
+EXTENSION_PATH = os.path.abspath("js")
 
 # Connect to SQLite and enable extension loading
 conn = sqlite3.connect(":memory:")
@@ -15,6 +15,8 @@ try:
 except sqlite3.OperationalError as e:
     print(f"Failed to load extension: {e}")
 
+conn.enable_load_extension(False)
+
 # Optionally test it (e.g., call a custom SQL function)
-cursor = conn.execute("SELECT my_custom_function(42);")
+cursor = conn.execute("SELECT js_version();")
 print(cursor.fetchone())
