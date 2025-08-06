@@ -22,12 +22,6 @@ sudo apt install sqlite3
 sudo dnf install sqlite
 ```
 
-### Alpine Linux
-
-```bash
-apk add sqlite
-```
-
 ### Arch Linux
 
 ```bash
