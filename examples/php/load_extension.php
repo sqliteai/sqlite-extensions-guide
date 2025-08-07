@@ -3,8 +3,8 @@ ini_set("sqlite3.extension_dir", "/usr/lib/php/20240924");
 
 /**
  * Install the official SQLite package for PHP in your system.
- * Then, uncomment `extension=sqlite3` and set the path to the 
- * SQLite3 extensions directory in the PHP ini:
+ * Then, in the PHP ini, uncomment `extension=sqlite3` and set 
+ * the path to the SQLite3 extensions directory:
  *      ```
  *      [sqlite3]
  *      ; Directory pointing to SQLite3 extensions
