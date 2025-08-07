@@ -28,6 +28,14 @@ sudo dnf install sqlite
 pacman -Sy sqlite3
 ```
 
+### Alpine Linux
+
+```bash
+apk add sqlite
+```
+
+**Note:** ensure to download the extension specifically for `musl-x86_64` or `musl-arm64` targets.
+
 ---
 
 ## Load Extension from CLI
@@ -45,7 +53,8 @@ SELECT my_custom_function();
 
 ## Troubleshooting
 
-| Problem                                    | Solution                                                              |
-| ------------------------------------------ | --------------------------------------------------------------------- |
-| `no such file or directory`                | Ensure path to `.so` is correct and matches your platform.            |
-| `incompatible architecture`                | Download extension for your Linux system (e.g., x86\_64 vs arm64).    |
+| Problem                                      | Solution                                                              |
+| -------------------------------------------- | --------------------------------------------------------------------- |
+| `no such file or directory`                  | Ensure path to `.so` is correct and matches your platform.            |
+| `incompatible architecture`                  | Download extension for your Linux system (e.g., x86\_64 vs arm64).    |
+| `Failed to load extension: symbol not found` | Download the extension for for `musl-x86_64` or `musl-arm64` targets  |
