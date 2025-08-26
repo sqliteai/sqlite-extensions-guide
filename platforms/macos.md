@@ -1,18 +1,20 @@
-On recent versions of macOS, the recommended way to load a SQLite extension is through the [.xcframework](https://github.com/sqliteai/sqlite-extensions-guide/blob/main/platforms/ios.md) approach, the same method used on iOS.
-
-## 🔧 Requirements
+## Requirements
 
 - Xcode installed
 - SQLite compiled with loadable extension support
 - Swift project (macOS/iOS)
 
+## macOS and xcframework
+
+On recent versions of macOS, the recommended way to load a SQLite extension is through the [.xcframework](https://github.com/sqliteai/sqlite-extensions-guide/blob/main/platforms/ios.md) approach, the same method used on iOS.
+
 ---
 
-## 🖥️ macOS
+## macOS and dylib
 
 On macOS, dynamic libraries (`.dylib`) can be loaded at runtime using SQLite’s `sqlite3_load_extension` API.
 
-### ✅ Step 1: Add Bridging Header (if using Swift only)
+### Step 1: Add Bridging Header (if using Swift only)
 
 Create a `bridging-header.h` file:
 
@@ -22,7 +24,7 @@ Create a `bridging-header.h` file:
 
 Set it in your Xcode project under **Build Settings → Objective-C Bridging Header**.
 
-### ✅ Step 2: Swift Code to Load Extension
+### Step 2: Swift Code to Load Extension
 
 ```swift
 import Foundation
