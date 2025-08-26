@@ -1,6 +1,4 @@
-Here’s a detailed guide for **loading a SQLite extension on macOS using Swift**, considering the key differences between the two platforms.
-
----
+On recent versions of macOS, the recommended way to load a SQLite extension is through the [.xcframework](https://github.com/sqliteai/sqlite-extensions-guide/blob/main/platforms/ios.md) approach, the same method used on iOS.
 
 ## 🔧 Requirements
 
