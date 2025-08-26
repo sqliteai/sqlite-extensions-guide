@@ -24,19 +24,24 @@ The official SQLite extension guide is available at [https://sqlite.org/loadext.
 
 Depending on the platform, compiled extensions will have different formats:
 
-| Platform | File Extension |
-| -------- | -------------- |
-| Linux    | `.so`          |
-| Android  | `.so`          |
-| macOS    | `.dylib`       |
-| iOS      | `.dylib`       |
-| Windows  | `.dll`         |
+| Platform | File Extension         |
+| -------- | -----------------------|
+| Linux    | `.so`                  |
+| Android  | `.so`                  |
+| macOS    | `.dylib, .xcframework` |
+| iOS      | `.dylib, .xcframework` |
+| Windows  | `.dll`                 |
 
 ### Notes:
 
 * **.dylib** is used for iOS/macOS, for Intel and ARM processors. Apple (macOS/iOS) also provides a mechanism to embed different processor architectures (known as “fat” or “universal” binaries) into the same library. This is **not supported** on Linux and Windows.
+* **.xcframework** is used for iOS/macOS to package multiple versions of the same framework (different platforms, OS versions, and architectures) into a single distributable bundle. It replaces the older “fat binary” approach and makes it easier to ship libraries that work seamlessly across devices and simulators.
 * **.so** is used for Linux and Android.
 * **.dll** is used for Windows.
+
+On **iOS**, Apple heavily restricts loading arbitrary dynamic code for security reasons. You cannot just download and load a .dylib at runtime. The only dynamic code allowed must be signed, shipped with the app, and declared properly.
+A **.xcframework** is just a packaging format for distributing precompiled frameworks across platforms and architectures. It doesn’t give you new dynamic loading capabilities—it just makes it easier to bundle and ship libraries. When you include an .xcframework in your app, Xcode links the correct slice (device vs. simulator, arm64 vs. x86_64, etc.), and the framework becomes part of your app bundle. At runtime, iOS loads it like any other embedded framework, but you cannot load an arbitrary new .xcframework after your app is shipped.
+So, .xcframework is the standard and recommended way to distribute binary iOS frameworks, but it’s not the only way to load dynamic code—you can still use traditional .framework bundles (though .xcframework replaces the old “fat binary” approach).
 
 ### Example: Linux Architecture Selection
 
@@ -80,6 +85,7 @@ Refer to the platform-specific **loading instructions** below:
 * [Loading extension on Windows](platforms/windows.md)
 * [Loading extension on iOS](platforms/ios.md)
 * [Loading extension on Android](platforms/android.md)
+* [Loading extension on Web](platforms/wasm.md)
 
 You can find practical **code samples** for loading SQLite extensions in various programming languages in the [examples](examples) directory.
 
