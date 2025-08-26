@@ -86,6 +86,7 @@ Refer to the platform-specific **loading instructions** below:
 * [Loading extension on iOS](platforms/ios.md)
 * [Loading extension on Android](platforms/android.md)
 * [Loading extension on Web](platforms/wasm.md)
+* [Loading extension on Expo/React Native](platforms/react-native-expo.md)
 
 You can find practical **code samples** for loading SQLite extensions in various programming languages in the [examples](examples) directory.
 
