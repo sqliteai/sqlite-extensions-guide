@@ -1,8 +1,6 @@
-# Installing Python with SQLite on Windows
+## Windows
 
-This guide explains how to set up SQLite for use with Python and C# on Windows.
-
----
+This guide explains how to install SQLite on Windows with support for loading extensions.
 
 ## Using SQLite with Python
 
@@ -22,8 +20,6 @@ This guide explains how to set up SQLite for use with Python and C# on Windows.
   ```
 
 See the [Python example](../examples/python/load_extension.py) for how to load SQLite extensions.
-
----
 
 ## Using SQLite with C#
 

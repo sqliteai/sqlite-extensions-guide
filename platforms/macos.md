@@ -1,49 +1,17 @@
-Here’s a detailed guide for **loading a SQLite extension on macOS using Swift**, considering the key differences between the two platforms.
+## macOS
 
----
+This guide explains how to install SQLite on macOS with support for loading extensions.
 
-## 🔧 Requirements
+## macOS and xcframework
 
-- Xcode installed
-- SQLite compiled with loadable extension support
-- Swift project (macOS/iOS)
-- For Python: Homebrew-installed Python
+On recent versions of macOS, the recommended way to load a SQLite extension is through the [.xcframework](https://github.com/sqliteai/sqlite-extensions-guide/blob/main/platforms/ios.md) approach, the same method used on iOS.
 
----
 
-## 🖥️ macOS
+## macOS and dylib
 
 On macOS, dynamic libraries (`.dylib`) can be loaded at runtime using SQLite’s `sqlite3_load_extension` API.
 
-### 🐍 Python on macOS
-
-The default Python on macOS doesn't support loading SQLite extensions. Use Homebrew Python instead:
-
-```bash
-brew install python
-```
-
-Create a virtual environment using Homebrew Python:
-
-```bash
-/usr/local/opt/python@3/libexec/bin/python -m venv my-venv
-source my-venv/bin/activate
-```
-
-Or create an alias in your shell profile (`.bashrc`, `.zshrc`, ...):
-
-```bash
-alias python3-brew="/usr/local/opt/python@3/libexec/bin/python"
-```
-
-Then use `python3-brew -m venv my-venv`
-
-Now you can load extensions in Python by following the [Python example](examples/python).
-
-
-### 🦉 Swift on macOS
-
-### ✅ Step 1: Add Bridging Header (if using Swift only)
+### Step 1: Add Bridging Header (if using Swift only)
 
 Create a `bridging-header.h` file:
 
@@ -53,7 +21,7 @@ Create a `bridging-header.h` file:
 
 Set it in your Xcode project under **Build Settings → Objective-C Bridging Header**.
 
-### ✅ Step 2: Swift Code to Load Extension
+### Step 2: Swift Code to Load Extension
 
 ```swift
 import Foundation
@@ -84,3 +52,23 @@ print("Extension loaded successfully.")
 
 > ⚠️ Gatekeeper may block unsigned `.dylib` files. You might need to codesign or use `spctl --add`.
 
+
+## Python on macOS
+
+The default Python on macOS doesn't support loading SQLite extensions. 
+Install Python from the [official package](https://www.python.org/downloads/macos/) or use Homebrew Python instead:
+
+```bash
+brew install python
+```
+
+Verify that you are using the Homebrew-installed `python3` by running:
+
+```bash
+which python3
+
+# /opt/homebrew/bin/python3
+```
+
+After installing Python with Homebrew, the `python` command now uses the Homebrew version.  
+You can now load SQLite extensions in Python as shown in the [Python example](examples/python).
