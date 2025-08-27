@@ -16,6 +16,7 @@ ini_set("sqlite3.extension_dir", "/usr/lib/php/20240924");
 $db = new SQLite3(':memory:');
 
 // Name of the  compiled extension (.dylib for macOS/iOS, .so for linux/Android, .dll for Windows).
+// Using `https://github.com/sqliteai/sqlite-js` extension as an example
 // The extension file must be located in the directory specified in the configure option `sqlite3.extension_dir`.
 // https://www.php.net/manual/en/sqlite3.loadextension.php
 $loaded = $db->loadExtension('js.so');

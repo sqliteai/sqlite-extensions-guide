@@ -2,6 +2,7 @@ import sqlite3
 import os
 
 # Path to your compiled extension (.dylib for macOS/iOS, .so for linux/Android, .dll for Windows)
+# Using `https://github.com/sqliteai/sqlite-js` extension as an example
 EXTENSION_PATH = os.path.abspath("js")
 
 # Connect to SQLite and enable extension loading

@@ -23,6 +23,7 @@ func main() {
 		&sqlite3.SQLiteDriver{
 			Extensions: []string{
 				// Path to your compiled extension (.dylib for macOS/iOS, .so for linux/Android, .dll for Windows)
+				// Using `https://github.com/sqliteai/sqlite-js` extension as an example
 				"./js",
 			},
 		})
