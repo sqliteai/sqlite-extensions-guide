@@ -1,14 +1,11 @@
-## Requirements
+## macOS
 
-- Xcode installed
-- SQLite compiled with loadable extension support
-- Swift project (macOS/iOS)
+This guide explains how to install SQLite on macOS with support for loading extensions.
 
 ## macOS and xcframework
 
 On recent versions of macOS, the recommended way to load a SQLite extension is through the [.xcframework](https://github.com/sqliteai/sqlite-extensions-guide/blob/main/platforms/ios.md) approach, the same method used on iOS.
 
----
 
 ## macOS and dylib
 
@@ -54,3 +51,24 @@ print("Extension loaded successfully.")
 ```
 
 > ⚠️ Gatekeeper may block unsigned `.dylib` files. You might need to codesign or use `spctl --add`.
+
+
+## Python on macOS
+
+The default Python on macOS doesn't support loading SQLite extensions. 
+Install Python from the [official package](https://www.python.org/downloads/macos/) or use Homebrew Python instead:
+
+```bash
+brew install python
+```
+
+Verify that you are using the Homebrew-installed `python3` by running:
+
+```bash
+which python3
+
+# /opt/homebrew/bin/python3
+```
+
+After installing Python with Homebrew, the `python` command now uses the Homebrew version.  
+You can now load SQLite extensions in Python as shown in the [Python example](examples/python).
