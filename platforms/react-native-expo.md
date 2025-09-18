@@ -2,6 +2,31 @@
 
 A comprehensive guide to integrating SQLite extensions in Expo and React Native applications using OP-SQLite.
 
+## 🚀 Getting Started
+
+Before setting up SQLite extensions, you'll need to create and initialize your project:
+
+### Create a New Expo Project
+
+```bash
+# Create a new project
+npx create-expo-app MyApp
+
+# Or use our pre-configured template with SQLite extensions
+npx create-expo-app MyApp --template @sqliteai/todoapp
+```
+
+### Initialize for Native Code
+
+Since SQLite extensions require native code, you must initialize your project:
+
+```bash
+cd MyApp
+npx expo prebuild
+```
+
+> **Important**: Run `npx expo prebuild` after any changes to native dependencies or extension files.
+
 ## 🤖 Android Setup
 
 ### Step 1: Download Android Extension
