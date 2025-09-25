@@ -1,15 +1,15 @@
 /**
- * This example uses the package `@sqliteai/sqlite-sync-wasm`.
- * This version of SQLite WASM is bundled with the SQLite Sync extension.
+ * This example uses the package `@sqliteai/sqlite-wasm`.
+ * This version of SQLite WASM is bundled with SQLite Sync and SQLite Vector extensions.
  * Extensions cannot be loaded at runtime in the browser environment.
  * 
  * Run: 
- *     `npm install @sqliteai/sqlite-sync-wasm`
+ *     `npm install @sqliteai/sqlite-wasm`
  * and serve the page with:
  *     `npx serve .`
  */
 
-import { sqlite3Worker1Promiser } from '@sqliteai/sqlite-sync-wasm';
+import { sqlite3Worker1Promiser } from '@sqliteai/sqlite-wasm';
 
 const log = console.log;
 const error = console.error;
@@ -34,7 +34,7 @@ const initializeSQLite = async () => {
     
     await promiser('exec', { 
         dbId, 
-        sql: 'SELECT cloudsync_version();',
+        sql: 'SELECT cloudsync_version();', // or vector_version()
         callback: (result) => {
             if (!result.row) {
                 return;
