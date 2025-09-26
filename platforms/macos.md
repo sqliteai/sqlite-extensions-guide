@@ -71,4 +71,4 @@ which python3
 ```
 
 After installing Python with Homebrew, the `python` command now uses the Homebrew version.  
-You can now load SQLite extensions in Python as shown in the [Python example](examples/python).
+You can now load SQLite extensions in Python as shown in the [Python example](../examples/python/load_extension.py).
