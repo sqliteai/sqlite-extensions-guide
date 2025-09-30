@@ -57,4 +57,4 @@ SELECT my_custom_function();
 | -------------------------------------------- | --------------------------------------------------------------------- |
 | `no such file or directory`                  | Ensure path to `.so` is correct and matches your platform.            |
 | `incompatible architecture`                  | Download extension for your Linux system (e.g., x86\_64 vs arm64).    |
-| `Failed to load extension: symbol not found` | Download the extension for for `musl-x86_64` or `musl-arm64` targets  |
+| `Failed to load extension: symbol not found` | Download the extension for `musl-x86_64` or `musl-arm64` targets  |
