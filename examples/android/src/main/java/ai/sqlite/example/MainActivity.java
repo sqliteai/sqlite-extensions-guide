@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String getLibraryPath(String libraryName) {
-        return getApplicationInfo().nativeLibraryDir + "/lib" + libraryName + ".so";
+        return getApplicationInfo().nativeLibraryDir + "/" + libraryName + ".so";
     }
 
     private void setupCustomSQLiteWithExtension() {
