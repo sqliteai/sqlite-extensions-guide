@@ -80,3 +80,31 @@ Thumbs.db
 *.db
 *.sqlite
 *.sqlite3
+
+# Build artifacts
+build/
+/dist
+.build
+*.a
+*.sqlite
+
+# iOS/macOS
+*.xcworkspacedata
+*.xcuserstate
+*.xcbkptlist
+*.plist
+
+# Android
+.gradle/
+gradle/
+*.aar
+local.properties
+jniLibs/
+*.apk
+*.ap_
+*.dex
+
+# IDE
+.vscode
+.idea/
+*.iml
