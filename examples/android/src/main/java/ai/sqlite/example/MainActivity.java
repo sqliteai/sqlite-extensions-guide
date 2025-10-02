@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import io.requery.android.database.sqlite.SQLiteCustomExtension;
 import io.requery.android.database.sqlite.SQLiteDatabase;
 import io.requery.android.database.sqlite.SQLiteDatabaseConfiguration;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private TextView resultTextView;
@@ -18,39 +20,50 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         resultTextView = findViewById(R.id.result_text);
-        setupCustomSQLiteWithExtension();
+        setupCustomSQLiteWithExtensions();
     }
 
     private String getLibraryPath(String libraryName) {
         return getApplicationInfo().nativeLibraryDir + "/" + libraryName;
     }
 
-    private void setupCustomSQLiteWithExtension() {
+    private List<SQLiteCustomExtension> loadExtensions(String... extensionNames) {
+        List<SQLiteCustomExtension> extensions = new ArrayList<>();
+        for (String extensionName : extensionNames) {
+            extensions.add(new SQLiteCustomExtension(getLibraryPath(extensionName), null));
+        }
+        return extensions;
+    }
+
+    private void setupCustomSQLiteWithExtensions() {
         try {
-            SQLiteCustomExtension vectorExtension = new SQLiteCustomExtension(getLibraryPath("vector"), null);
+            List<SQLiteCustomExtension> extensions = loadExtensions("vector", "js");
+
             SQLiteDatabaseConfiguration config = new SQLiteDatabaseConfiguration(
-                getCacheDir().getPath() + "/vector_test.db",
+                getCacheDir().getPath() + "/ext_test.db",
                 SQLiteDatabase.CREATE_IF_NECESSARY | SQLiteDatabase.OPEN_READWRITE,
                 Collections.emptyList(),
                 Collections.emptyList(),
-                Collections.singletonList(vectorExtension)
+                extensions
             );
 
             SQLiteDatabase db = SQLiteDatabase.openDatabase(config, null, null);
-            testVectorVersionWithCustomSQLite(db);
 
+            testExtVersionWithCustomSQLite(db, "vector");
+            testExtVersionWithCustomSQLite(db, "js");
+
+            db.close();
         } catch (Exception e) {
             resultTextView.setText("❌ Error: " + e.getMessage());
         }
     }
 
-    private void testVectorVersionWithCustomSQLite(SQLiteDatabase db) {
-        Cursor cursor = db.rawQuery("SELECT vector_version()", null);
+    private void testExtVersionWithCustomSQLite(SQLiteDatabase db, String extName) {
+        Cursor cursor = db.rawQuery("SELECT " + extName + "_version()", null);
         if (cursor.moveToFirst()) {
             String version = cursor.getString(0);
-            resultTextView.setText("vector_version(): " + version);
+            resultTextView.append("\n" + extName + "_version(): " + version);
         }
         cursor.close();
-        db.close();
     }
 }

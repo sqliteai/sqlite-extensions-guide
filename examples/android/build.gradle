@@ -49,4 +49,5 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.github.requery:sqlite-android:3.49.0'
     implementation 'ai.sqlite:vector:0.9.32'
+    implementation 'ai.sqlite:js:1.1.11'
 }
