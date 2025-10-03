@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupCustomSQLiteWithExtensions() {
         try {
-            List<SQLiteCustomExtension> extensions = loadExtensions("vector", "js", "cloudsync");
+            List<SQLiteCustomExtension> extensions = loadExtensions("vector", "js", "cloudsync", "ai");
 
             SQLiteDatabaseConfiguration config = new SQLiteDatabaseConfiguration(
                 getCacheDir().getPath() + "/ext_test.db",
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             testExtVersionWithCustomSQLite(db, "vector");
             testExtVersionWithCustomSQLite(db, "js");
             testExtVersionWithCustomSQLite(db, "cloudsync");
+            testExtVersionWithCustomSQLite(db, "ai");
 
             db.close();
         } catch (Exception e) {

@@ -27,7 +27,7 @@ Depending on the platform, compiled extensions will have different formats:
 | Platform | File Extension         |
 | -------- | -----------------------|
 | Linux    | `.so`                  |
-| Android  | `.so`                  |
+| Android  | `.so, .aar`            |
 | macOS    | `.dylib, .xcframework` |
 | iOS      | `.dylib, .xcframework` |
 | Windows  | `.dll`                 |
@@ -37,6 +37,7 @@ Depending on the platform, compiled extensions will have different formats:
 * **.dylib** is used for iOS/macOS, for Intel and ARM processors. Apple (macOS/iOS) also provides a mechanism to embed different processor architectures (known as “fat” or “universal” binaries) into the same library. This is **not supported** on Linux and Windows.
 * **.xcframework** is used for iOS/macOS to package multiple versions of the same framework (different platforms, OS versions, and architectures) into a single distributable bundle. It replaces the older “fat binary” approach and makes it easier to ship libraries that work seamlessly across devices and simulators.
 * **.so** is used for Linux and Android.
+* **.aar** (Android Archive) is an Android-specific package format that bundles compiled code, resources, and native libraries (`.so` files) for distribution via Maven Central or JitPack. When you add an `.aar` dependency to your Android project, the native `.so` libraries are automatically extracted to the device's `nativeLibraryDir` at installation time, where they can be loaded as SQLite extensions. This is the standard way to distribute SQLite extensions for Android apps.
 * **.dll** is used for Windows.
 
 On **iOS**, Apple heavily restricts loading arbitrary dynamic code for security reasons. You cannot just download and load a .dylib at runtime. The only dynamic code allowed must be signed, shipped with the app, and declared properly.

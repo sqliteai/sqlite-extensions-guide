@@ -1,8 +1,109 @@
 # Android Integration
 
-This guide shows how to integrate a SQLite extension named `cloudsync.so` into your Android application. Since extension loading is disabled by default in Android's SQLite implementation, you need an alternative SQLite library that supports extensions.
+This guide shows how to integrate SQLite extensions into your Android application. Since extension loading is disabled by default in Android's SQLite implementation, you need an alternative SQLite library that supports extensions.
 
-This example uses the [requery:sqlite-android](https://github.com/requery/sqlite-android) library, but other options include building a custom SQLite with extension support or using other third-party SQLite libraries that enable extension loading.
+We recommend using the [requery:sqlite-android](https://github.com/requery/sqlite-android) library, which provides full SQLite extension support. There are two approaches to using SQLite extensions on Android:
+
+1. **Using AAR packages** (Recommended) - Extensions distributed via Maven Central or JitPack
+2. **Manually bundling `.so` files** - For custom or pre-compiled extensions
+
+---
+
+## Method 1: Using AAR Packages (Recommended)
+
+SQLite AI extensions are distributed as AAR (Android Archive) packages via Maven Central and JitPack. This is the easiest method as dependencies are automatically resolved and native libraries are extracted at installation time.
+
+### Available Extensions
+
+- **[sqlite-vector](https://github.com/sqliteai/sqlite-vector)** - Vector similarity search
+- **[sqlite-js](https://github.com/sqliteai/sqlite-js)** - JavaScript execution in SQLite
+- **[sqlite-sync](https://github.com/sqliteai/sqlite-sync)** - Cloud synchronization
+- **[sqlite-ai](https://github.com/sqliteai/sqlite-ai)** - AI/ML functionality
+
+### Installation
+
+Add the required repositories and dependencies to your `build.gradle` or `build.gradle.kts`:
+
+**Gradle (Groovy):**
+```groovy
+repositories {
+    google()
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    // SQLite library with extension support (required)
+    implementation 'com.github.requery:sqlite-android:3.49.0'
+
+    // SQLite AI extensions (Maven Central)
+    implementation 'ai.sqlite:vector:0.9.34'
+    implementation 'ai.sqlite:js:1.1.12'
+    implementation 'ai.sqlite:sync:0.8.41'
+    implementation 'ai.sqlite:ai:0.7.55'
+
+    // Alternative: Use JitPack instead
+    // implementation 'com.github.sqliteai:sqlite-vector:0.9.32'
+    // implementation 'com.github.sqliteai:sqlite-js:1.1.12'
+    // implementation 'com.github.sqliteai:sqlite-sync:0.8.41'
+    // implementation 'com.github.sqliteai:sqlite-ai:0.7.55'
+}
+```
+
+**Kotlin Gradle (build.gradle.kts):**
+```kotlin
+repositories {
+    google()
+    mavenCentral()
+    maven(url = "https://jitpack.io")
+}
+
+dependencies {
+    // SQLite library with extension support (required)
+    implementation("com.github.requery:sqlite-android:3.49.0")
+
+    // SQLite AI extensions (Maven Central)
+    implementation("ai.sqlite:vector:0.9.34")
+    implementation("ai.sqlite:js:1.1.12")
+    implementation("ai.sqlite:sync:0.8.41")
+    implementation("ai.sqlite:ai:0.7.55")
+}
+```
+
+### Enable Native Library Extraction
+
+Add `android:extractNativeLibs="true"` to your `AndroidManifest.xml`:
+
+```xml
+<application
+    android:extractNativeLibs="true"
+    ...>
+</application>
+```
+
+This is **required** because SQLite's `sqlite3_load_extension()` needs a file path to load extensions. By default, Android API 23+ keeps native libraries compressed inside the APK. Setting `extractNativeLibs="true"` extracts `.so` files to the device filesystem where SQLite can access them.
+
+### Complete Working Example
+
+For a complete, working Android application demonstrating multiple SQLite extensions, see:
+
+**[examples/android](../examples/android/README.md)**
+
+This example shows how to:
+- Load multiple extensions (vector, js, sync, ai)
+- Configure the database with extension support
+- Verify extensions are loaded correctly
+- Use extension functions in SQL queries
+
+---
+
+## Method 2: Manually Bundling Extensions
+
+If you have custom `.so` files or pre-compiled extensions not available as AAR packages, you can manually bundle them in your app's assets and load them at runtime.
+
+### Prerequisites
+
+This method uses the [requery:sqlite-android](https://github.com/requery/sqlite-android) library, but other options include building a custom SQLite with extension support or using other third-party SQLite libraries that enable extension loading.
 
 ### 1. Add Dependencies
 

@@ -48,7 +48,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.10.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.github.requery:sqlite-android:3.49.0'
-    implementation 'ai.sqlite:vector:0.9.32'
-    implementation 'ai.sqlite:js:1.1.11'
-    implementation 'ai.sqlite:sync:0.8.39'
+    implementation 'ai.sqlite:vector:0.9.34'
+    implementation 'ai.sqlite:js:1.1.12'
+    implementation 'ai.sqlite:sync:0.8.41'
+    implementation 'ai.sqlite:ai:0.7.55'
 }
