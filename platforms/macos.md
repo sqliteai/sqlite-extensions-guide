@@ -50,9 +50,6 @@ if sqlite3_load_extension(db, extensionPath, nil, nil) != SQLITE_OK {
 print("Extension loaded successfully.")
 ```
 
-> ⚠️ Gatekeeper may block unsigned `.dylib` files. You might need to codesign or use `spctl --add`.
-
-
 ## Python on macOS
 
 The default Python on macOS doesn't support loading SQLite extensions. 

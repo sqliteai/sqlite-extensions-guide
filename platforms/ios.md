@@ -27,7 +27,7 @@ This guide will walk you through setting up SQLite in Swift to load SQLiteAI ext
 
 ## 3. Handle Security Permissions (macOS)
 
-When you return to the main ContentView file, you may encounter an Apple security error:
+When you return to the main ContentView file, you may encounter an Apple security error. **If you do not encounter this error, skip to Step 4.** Otherwise, follow these steps:
 
 1. Click **Done** when the security dialog appears
 2. Open **System Settings** → **Privacy & Security**
