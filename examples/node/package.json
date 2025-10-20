@@ -1,0 +1,32 @@
+{
+  "name": "sqliteai-extensions-examples",
+  "version": "1.0.0",
+  "description": "Examples for using SQLite extensions from @sqliteai in Node.js",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node example.js",
+    "example": "node example.js"
+  },
+  "keywords": [
+    "sqlite",
+    "extensions",
+    "vector",
+    "ai",
+    "sync",
+    "javascript"
+  ],
+  "author": "Gioele Cantoni (gioele@sqlitecloud.io)",
+  "dependencies": {
+    "better-sqlite3": "^12.4.1"
+  },
+  "optionalDependencies": {
+    "@sqliteai/sqlite-ai": "*",
+    "@sqliteai/sqlite-js": "*",
+    "@sqliteai/sqlite-sync": "*",
+    "@sqliteai/sqlite-vector": "*"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
