@@ -86,6 +86,7 @@ Refer to the platform-specific **loading instructions** below:
 * [Loading extension on Windows](platforms/windows.md)
 * [Loading extension on iOS](platforms/ios.md)
 * [Loading extension on Android](platforms/android.md)
+* [Loading extension in Flutter/Dart](platforms/flutter.md)
 * [Loading extension on Web/WASM](https://github.com/sqliteai/sqlite-extensions-guide/tree/main/examples/browser-wasm)
 * [Loading extension on Expo/React Native](platforms/react-native-expo.md)
 

@@ -108,3 +108,9 @@ jniLibs/
 .vscode
 .idea/
 *.iml
+
+# Dart/Flutter
+.dart_tool/
+pubspec.lock
+.flutter-plugins
+.flutter-plugins-dependencies

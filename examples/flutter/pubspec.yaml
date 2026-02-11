@@ -1,0 +1,29 @@
+name: sqliteai_flutter_example
+description: Example Flutter app demonstrating SQLiteAI extensions with sqlite3.
+publish_to: none
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  sqlite3: ^3.0.0
+  # SQLiteAI Extensions
+  sqlite_vector: ^0.9.85
+  sqlite_js: ^1.2.3
+  sqlite_sync: ^0.8.64
+  sqlite_ai: ^0.7.59
+  sqlite_agent: ^0.1.6
+  sqlite_mcp: ^0.1.5
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
